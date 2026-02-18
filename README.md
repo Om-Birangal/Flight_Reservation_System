@@ -1,113 +1,63 @@
-import java.util.*;
-class Flight {
-    int flightNo;
-    String source, destination;
-    double price;
-    boolean isBooked;
-    Flight(int flightNo, String source, String destination, double price) {
-        this.flightNo = flightNo;
-        this.source = source;
-        this.destination = destination;
-        this.price = price;
-        this.isBooked = false;
-    }
-    void display() {
-        System.out.printf("%-10d %-15s %-15s %-10.2f %-10s\n",
-                flightNo, source, destination, price,
-                (isBooked ? "Booked" : "Available"));
-    }
-}
+## 📌 Project Overview
+The **Flight Reservation System** is a menu-driven Java console application that simulates the basic functionalities of an airline booking system. It allows users to view flight details, search flights, sort flights by price, and book flights interactively.
 
-public class FlightReservationSystem {
-    static Scanner sc = new Scanner(System.in);
-    static ArrayList<Flight> flights = new ArrayList<>();
-    // Initialize flight data
-    static void initializeFlights() {
-        flights.add(new Flight(101, "Pune", "Delhi", 4500));
-        flights.add(new Flight(102, "Mumbai", "Chennai", 5500));
-        flights.add(new Flight(103, "Delhi", "Bangalore", 6000));
-        flights.add(new Flight(104, "Pune", "Kolkata", 7500));
-        flights.add(new Flight(105, "Goa", "Hyderabad", 4000));
-    }
-    static void displayFlights() {
-        System.out.printf("%-10s %-15s %-15s %-10s %-10s\n",
-                "FlightNo", "Source", "Destination", "Price", "Status");
-        for (Flight f : flights)
-            f.display();
-    }
-    static void sortByPrice() {
-        flights.sort(Comparator.comparingDouble(f -> f.price));
-        System.out.println("Flights sorted by price.");
-    }
-    static void searchByDestination(String dest) {
-        boolean found = false;
-        for (Flight f : flights) {
-            if (f.destination.equalsIgnoreCase(dest)) {
-                f.display();
-                found = true;
-            }
-        }
-        if (!found)
-            System.out.println("No flights found to " + dest);
-    }
-    static void searchByFlightNo(int no) {
-        for (Flight f : flights) {
-            if (f.flightNo == no) {
-                System.out.println("Flight Found:");
-                f.display();
-                return;
-            }
-        }
-        System.out.println("Flight not found.");
-    }
-    static void bookFlight(int no) {
-        for (Flight f : flights) {
-            if (f.flightNo == no) {
-                if (!f.isBooked) {
-                    f.isBooked = true;
-                    System.out.println("Booking Confirmed: "+ f.source + " → " + f.destination);
-                } else {
-                    System.out.println("Flight already booked.");
-                }
-                return;
-            }
-        }
-        System.out.println("Invalid Flight Number.");
-    }
-    public static void main(String[] args) {
-        initializeFlights(); // 🔴 Important call
-        int ch;
-        do {
-            System.out.println("\n=== Flight Reservation System ===");
-            System.out.print("1. View Flights\n2. Sort by Price\n3. Search by Destination\n4. Search by Flight No\n5. Book Flight\n6. Exit\nEnter choice: ");
-            ch = sc.nextInt();
-            switch (ch) {
-                case 1:
-                    displayFlights();
-                    break;
-                case 2:
-                    sortByPrice();
-                    displayFlights();
-                    break;
-                case 3:
-                    System.out.print("Enter Destination: ");
-                    searchByDestination(sc.next());
-                    break;
-                case 4:
-                    System.out.print("Enter Flight No: ");
-                    searchByFlightNo(sc.nextInt());
-                    break;
-                case 5:
-                    System.out.print("Enter Flight No to Book: ");
-                    bookFlight(sc.nextInt());
-                    break;
-                case 6:
-                    System.out.println("Thank you!");
-                    break;
-                default:
-                    System.out.println("Invalid choice!");
-            }
-        } while (ch != 6);
-        sc.close();
-    }
-}
+This project is designed to demonstrate **core Java programming concepts**, including object-oriented programming (OOP), collections, sorting, searching, and user input handling. It is suitable for academic purposes, lab assignments, and beginners learning Java.
+
+## 🎯 Objectives
+- To design a simple flight booking system using Java
+- To understand and implement OOP concepts such as classes and objects
+- To use the Java Collections Framework (`ArrayList`)
+- To implement searching and sorting techniques
+- To develop a menu-driven console application
+
+## 🔧 Features
+- View all available flights
+- Sort flights by ticket price
+- Search flights by destination
+- Search flights by flight number
+- Book flights with booking status validation
+- Display booking status (Available / Booked)
+- User-friendly menu-driven interface
+
+## 🛠️ Technologies Used
+- Java
+- Java Collections Framework
+- Console-based input/output
+
+## 🧱 Project Structure
+FlightReservationSystem/
+│
+├── FlightReservationSystem.java
+├── README.md
+
+## ▶️ How to Run the Project
+1. Install **Java JDK** on your system.
+2. Clone this repository or download the source code.
+3. Open a terminal/command prompt.
+4. Navigate to the project directory.
+5. Compile the program:
+   ```bash
+   javac FlightReservationSystem.java
+6. Run the program: java FlightReservationSystem
+## 📘 Sample Menu
+=== Flight Reservation System ===
+1. View Flights
+2. Sort by Price
+3. Search by Destination
+4. Search by Flight No
+5. Book Flight
+6. Exit
+## 📚 Learning Outcomes
+- Clear understanding of Java classes, objects, and constructors
+- Practical use of ArrayList and Comparator
+- Implementation of sorting and searching logic
+- Experience in building menu-driven applications
+- Improved logical thinking and problem-solving skills
+## 🚀 Future Enhancements
+- Add passenger details
+- Implement flight cancellation
+- Add seat availability management
+- Store booking data using file handling or database
+- Create a GUI version using Java Swing or JavaFX
+## 👨‍💻 Author
+- Om Birangal
